@@ -1,0 +1,26 @@
+<div class="$!{styleClass}" style="float:right; margin-top:5px; margin-right:15px;">
+	<form id="${formid}" action="${action}" method="post">
+		
+		<input type="hidden" name="page.currentPage" id="${formid}.currentPage">
+		
+		#if(${prePage})
+			<a href="#" onclick="$('#${formid}_pageRequest').val($currentPage - 1); gotoPage(event, $('#${formid}_pageRequest'), '${totalPage}', $('#$formid'), $('#${formid}\\.currentPage'));">上一页</a>&nbsp;
+		#end
+		
+		#if(${nextPage})
+			<a href="#" onclick="$('#${formid}_pageRequest').val($currentPage + 1); gotoPage(event, $('#${formid}_pageRequest'), '${totalPage}', $('#$formid'), $('#${formid}\\.currentPage'));">下一页</a>&nbsp;
+		#end
+		
+		共${totalPage}页&nbsp;
+		第&nbsp;<input type="text" size="2" style="width:30px" name="pageRequest" id="${formid}_pageRequest" value="${currentPage}">&nbsp;页
+			
+        <a href="#" onclick="gotoPage(event, $('#${formid}_pageRequest'), ${totalPage}, $('#${formid}'), $('#${formid}\\.currentPage'));" style="text-decoration: none;">转到</a>
+		
+		<input type="hidden" name="assistInputbox" value="$!{assistInputbox}"/>
+		
+		<input type="hidden" name="isPage"/>
+		
+    </form>
+</div>
+
+<div style="clear:both"></div>

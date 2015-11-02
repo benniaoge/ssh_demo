@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<context:annotation-config />
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:dbcp.properties</value>
+				<value>classpath:hibernate.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="genericDaoSupport" class="org.abin.core.dao.impl.GenericDaoSupportImpl" />
+
+	<bean id="genericService" class="org.abin.core.service.impl.GenericServiceImpl" />
+
+	<bean id="searchDialect" class="org.abin.core.search.dialect.impl.MySqlDialect" />
+
+	<bean id="page" class="org.abin.core.page.Page" scope="prototype" />
+	
+	<bean id="servletContextLoader" class="org.abin.core.loader.ServletContextLoaderImpl">
+		<property name="servletContextLoaders">
+			<list value-type="org.abin.core.loader.ServletContextLoader">
+				<ref bean="systemLoader"/>
+				<ref bean="dictLoader"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="systemLoader" class="org.abin.core.loader.SystemLoader"/>
+	
+	<bean id="dictLoader" class="com.abin.demo.loader.DictLoader"/>
+
+</beans>

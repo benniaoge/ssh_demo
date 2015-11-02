@@ -1,0 +1,20 @@
+﻿ssh框架搭建		ok
+脚本验证框架		ok
+日历控件			ok
+文件上传			ok
+字典翻译			ok
+HTML编辑器		ok ------上传图片有问题
+pdf下载			ok ------文件后缀
+json
+dwr
+velocity memory
+加索引
+in or
+jquery弹出窗口
+ajax文件上传
+点菜单清除stack中的以前保存的查询参数值
+jetty
+界面有输入条件时，点击菜单后条件为空，再点分页后条件又回来了
+
+spring cache
+jbpm

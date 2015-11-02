@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+	
+	<constant name="struts.convention.action.mapAllMatches" value="true" />
+	<constant name="struts.convention.default.parent.package" value="struts-config" />
+	<constant name="struts.convention.action.packages" value="com.abin.demo.action" />
+	<constant name="struts.convention.result.path" value="/" />
+	 
+	<package name="struts-config" extends="struts-default" namespace="/">
+		<!-- 
+		<result-types>
+		</result-types>
+ 		-->
+		<interceptors>
+			<interceptor name="exception" class="org.abin.core.struts.interceptor.ExceptionCatcherInterceptor" />
+			<interceptor name="preloading" class="org.abin.core.struts.interceptor.PreloadingInterceptor" />
+			<interceptor name="search" class="org.abin.core.struts.interceptor.SearchInterceptor" />
+			<interceptor name="searchCleanUp" class="org.abin.core.struts.interceptor.SearchCriteriaCleanupInterceptor" />
+			<interceptor name="myFileUpload" class="org.abin.core.struts.interceptor.MyFileUploadInterceptor" />
+
+			<interceptor-stack name="demoDefaultWebStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="autowiring" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="chain" />
+				<!-- interceptor-ref name="authenticate" / -->
+				<interceptor-ref name="searchCleanUp" />
+				<interceptor-ref name="search" />
+				<interceptor-ref name="preloading" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">(eq|neq|gt|lt|geq|leq|like|in|orderby|groupby)\.\D*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+			</interceptor-stack>
+			
+			<interceptor-stack name="demoFileUploadStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="myFileUpload">
+					<param name="maximumSize">1048576</param>
+				</interceptor-ref>
+				<interceptor-ref name="autowiring" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="chain" />
+				<!-- interceptor-ref name="authenticate" / -->
+				<interceptor-ref name="searchCleanUp" />
+				<interceptor-ref name="search" />
+				<interceptor-ref name="preloading" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">(eq|neq|gt|lt|geq|leq|like|in|orderby|groupby)\.\D*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+			</interceptor-stack>
+			
+		</interceptors>
+
+		<default-interceptor-ref name="demoDefaultWebStack" />
+
+		<global-results>
+			<result name="no_permission" type="redirect">/NoPermission.jsp</result>
+			<result name="system_error">/SystemError.jsp</result>
+			<result name="database_error">/SystemError.jsp</result>
+		</global-results>
+		
+	</package>
+		
+</struts>

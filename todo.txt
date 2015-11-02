@@ -1,0 +1,17 @@
+实现sitemesh
+实现token
+---------------------
+连接池溢出,连接不自动释放,查看c3p0源码
+
+-----------------------------
+连接池 DEBUG模式下有异常
+java.lang.Exception: DEBUG -- CLOSE BY CLIENT STACK TRACE
+	at com.mchange.v2.c3p0.impl.NewPooledConnection.close(NewPooledConnection.java:491)
+	at com.mchange.v2.c3p0.impl.NewPooledConnection.close(NewPooledConnection.java:191)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.destroyResource(C3P0PooledConnectionPool.java:470)
+	at com.mchange.v2.resourcepool.BasicResourcePool$1DestroyResourceTask.run(BasicResourcePool.java:964)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	
+----------------------------------
+jmeter资源监控
+jprofile

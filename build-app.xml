@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="elecSec" basedir="." default="deploy">
+	
+	<property file="${basedir}/build.properties"></property>
+	
+	<path id="classpath">
+		<fileset dir="${lib.path}" includes="*.jar"></fileset>
+		<fileset dir="${tomcat.lib.path}" includes="*.jar"></fileset>
+	</path>
+
+	<target name="help">
+		<echo>=================</echo>
+		<echo>${ant.version}</echo>
+		<echo>${java.version}</echo>
+	</target>
+	
+	<target name="clear">
+		<!--<delete dir="${dest.dir}"/>-->
+		<!--<delete dir="${class.dir}"/>-->
+	</target>
+
+	<target name="compile" depends="clear">
+		<mkdir dir="${class.dir}"/>
+		<javac srcdir="src" destdir="${class.dir}" classpathref="classpath"/>
+		<copy todir="${class.dir}" >
+			<fileset dir="conf"></fileset>
+		</copy>
+	</target>
+
+	<target name="war" depends="compile">
+		<mkdir dir="${dest.dir}"/>
+		<war destfile="${dest.dir}/${app.name}.war" basedir="web" includes="**"></war>
+	</target>
+	
+	<target name="deploy" depends="compile">
+		<!--<copy todir="${class.dir}" overwrite="true">
+			<fileset dir="deploy"></fileset>
+		</copy>-->
+		<mkdir dir="${dest.dir}"/>
+		<!--<war destfile="${dest.dir}/${app.name}.war" basedir="web" includes="**"></war>-->
+		<copy todir="${dest.dir}">
+					<fileset dir="web"></fileset>
+				</copy>
+	</target>
+
+</project>
+

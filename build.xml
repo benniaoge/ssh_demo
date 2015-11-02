@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="demo" basedir="." default="help">
+	
+	<property file="${basedir}/build.properties"></property>
+	
+	<path id="classpath">
+		<fileset dir="${lib.path}" includes="*.jar"></fileset>
+		<fileset dir="${tomcat.lib.path}" includes="*.jar"></fileset>
+	</path>
+	
+	<target name="help">
+		<echo>${ant.version}</echo>
+		<echo>${java.version}</echo>
+		<echo>${ant.java.version}</echo>
+	</target>
+	
+	<target name="clear">
+		<delete dir="${core.class}"/>
+		<delete dir="${jar.path}"/>
+	</target>
+
+	<target name="core_compile" depends="clear">
+		<mkdir dir="${core.class}"/>
+		<javac srcdir="${core.src}" destdir="${core.class}" classpathref="classpath" encoding="UTF-8" includeantruntime="no">
+		</javac>
+		<copy todir="${core.class}" overwrite="true">
+			<fileset dir="conf">
+				<include name="template/**"/>
+				<include name="velocity.properties"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="core_jar" depends="core_compile">
+		<mkdir dir="${jar.path}"/>
+		<jar destfile="${jar.path}/${jar.name}" basedir="${core.class}" includes="**">
+			<metainf dir="${tld.path}" includes="**"/>
+		</jar>
+	</target>
+	
+</project>
+
