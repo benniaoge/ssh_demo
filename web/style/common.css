@@ -1,0 +1,96 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	margin: 0px auto;
+}
+
+#header {
+	height: 80px;
+	background: #4D4D4D;
+}
+
+#header .title {
+	color: #FFF;
+	font-weight: bold;
+	font-size: 2em;
+	height: 2em;
+	line-height: 2em;
+	margin-left: 30px;
+	display: inline-block;
+}
+
+#container {
+	margin: 20px 0px;
+	min-height: 400px;
+}
+
+#navg {
+	height: auto;
+	width: 15%;
+	float: left;
+	text-align: center;
+	border-right: 1px solid #4D4D4D;
+	padding-right: 30px;
+}
+
+#main {
+	height: auto;
+	float: right;
+	width: 80%;
+}
+
+#content {
+}
+
+#footer {
+	height: 60px;
+	background: #4D4D4D;
+}
+
+#message {
+	color: #FF0000;
+	padding-bottom: 1em;
+	line-height: 1em;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+input {
+	height: 2em;
+	width: 20em;
+	line-height: 2em;
+}
+
+select {
+	height: 2em;
+	width: 20em;
+}
+
+table {
+	border-left: 1px solid #CCC;
+	border-top: 1px solid #CCC;
+	width: 90%;
+}
+
+th {
+	border-right: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	background-color: #4D4D4D;
+	color: #FFF;
+	height: 2em;
+}
+
+td {
+	border-right: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	text-align: center;
+	height: 2em;
+}

@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+#navg div {
+	height: 2em;
+	line-height: 2em;
+	background-color: #4D4D4D;
+	color: #FFF;
+	margin-top: 1px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#navg ul {
+	list-style-type: none;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#navg li {
+	height: 2em;
+	line-height: 2em;
+}
