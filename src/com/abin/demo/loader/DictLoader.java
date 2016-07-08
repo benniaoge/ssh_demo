@@ -9,7 +9,7 @@ import javax.servlet.ServletContext;
 
 import org.abin.core.loader.ServletContextLoader;
 import org.abin.core.service.GenericService;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.abin.core.util.WebContextUtils;
 
 import com.abin.demo.dict.entity.Dict;
 
@@ -17,7 +17,8 @@ public class DictLoader implements ServletContextLoader {
 
 	@Override
 	public void initServletContext(ServletContext servletContext) {
-		GenericService genericService = (GenericService) WebApplicationContextUtils.getWebApplicationContext(servletContext).getBean("genericService");
+		@SuppressWarnings("unchecked")
+		GenericService<Dict> genericService = WebContextUtils.getBean(servletContext, "genericService", GenericService.class);
 		List<Dict> dicts = genericService.loadAll(Dict.class);
 
 		Map<Integer, Map<String, String>> dictMaps = new HashMap<Integer, Map<String, String>>();

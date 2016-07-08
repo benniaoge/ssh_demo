@@ -9,8 +9,13 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-	<import resource="spring/spring-datasource.xml"/>
-	<import resource="spring/spring-config.xml"/>
-	<import resource="spring/spring-beans.xml"/>
+	<context:annotation-config />
+	<import resource="classpath:spring/spring-config.xml"/>
+	<import resource="classpath:spring/spring-c3p0.xml"/>
+	<import resource="classpath:spring/spring-beans.xml"/>
+	<import resource="classpath:spring/spring-redis-mq.xml"/>
+	<import resource="classpath:spring/spring-redis-cm.xml"/>
+	<import resource="classpath:spring/spring-redis-crowd.xml"/>
+	<import resource="classpath:spring/spring-quartz.xml"/>
 
 </beans>
