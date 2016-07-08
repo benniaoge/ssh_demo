@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class Result implements Serializable {
+public class Result<T> implements Serializable {
 
 	/**
 	 * 
@@ -14,16 +14,16 @@ public class Result implements Serializable {
 	
 	private Page page;
 	
-	private List<?> items;
+	private List<T> items;
 	
-	public Result(Page page, List<?> items) {
+	public Result(Page page, List<T> items) {
 		this.page = page;
 		this.items = items;
 	}
 	
-	public Result(Page page, Set<Object> items){
+	public Result(Page page, Set<T> items){
 		this.page = page;
-		List<Object> tempList = new ArrayList<Object>();
+		List<T> tempList = new ArrayList<T>();
 		tempList.addAll(items);
 		this.items = tempList;
 	}
@@ -36,14 +36,12 @@ public class Result implements Serializable {
 		this.page = page;
 	}
 
-	public List<?> getItems() {
+	public List<T> getItems() {
 		return items;
 	}
 
-	public void setItems(List<?> items) {
+	public void setItems(List<T> items) {
 		this.items = items;
 	}
-	
-	
 
 }

@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class ServletContextLoaderListener implements ServletContextListener {
-	
+
 	private ServletContextLoader servletContextLoader;
 
 	@Override
@@ -21,7 +21,7 @@ public class ServletContextLoaderListener implements ServletContextListener {
 		this.servletContextLoader = createServletContextLoader(event);
 		this.servletContextLoader.initServletContext(event.getServletContext());
 	}
-	
+
 	private ServletContextLoader createServletContextLoader(ServletContextEvent event) {
 		ApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(event.getServletContext());
 		return (ServletContextLoader) applicationContext.getBean("servletContextLoader");

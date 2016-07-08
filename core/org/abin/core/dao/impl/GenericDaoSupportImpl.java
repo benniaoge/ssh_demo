@@ -30,7 +30,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * @author ZhangBin
  * 
  */
-public class GenericDaoSupportImpl extends HibernateDaoSupport implements GenericDaoSupport {
+public class GenericDaoSupportImpl<T> extends HibernateDaoSupport implements GenericDaoSupport<T> {
 
 	private SimpleJdbcTemplate simpleJdbcTemplate;
 
@@ -41,47 +41,47 @@ public class GenericDaoSupportImpl extends HibernateDaoSupport implements Generi
 	// ----------------------------
 
 	@Override
-	public Serializable save(Object entity) {
+	public Serializable save(T entity) {
 		return getHibernateTemplate().save(entity);
 	}
 
 	@Override
-	public void update(Object entity) {
+	public void update(T entity) {
 		getHibernateTemplate().update(entity);
 	}
 
 	@Override
-	public void saveOrUpdate(Object entity) {
+	public void saveOrUpdate(T entity) {
 		getHibernateTemplate().saveOrUpdate(entity);
 	}
 
 	@Override
-	public void delete(Object entity) {
+	public void delete(T entity) {
 		getHibernateTemplate().delete(entity);
 	}
 
 	@Override
-	public void delete(Class<?> entityClass, Serializable id) {
+	public void delete(Class<T> entityClass, Serializable id) {
 		delete(load(entityClass, id));
 	}
 	
 	@Override
-	public <T> T load(Class<T> entityClass, Serializable id) {
+	public T load(Class<T> entityClass, Serializable id) {
 		return getHibernateTemplate().load(entityClass, id);
 	}
 	
 	@Override
-	public <T> List<T> loadAll(Class<T> entityClass) {
+	public List<T> loadAll(Class<T> entityClass) {
 		return getHibernateTemplate().loadAll(entityClass);
 	}
 	
 	@Override
-	public <T> T get(Class<T> entityClass, Serializable id) {
+	public T get(Class<T> entityClass, Serializable id) {
 		return getHibernateTemplate().get(entityClass, id);
 	}
 	
 	@Override
-	public int count(Class<?> entityClass) {
+	public int count(Class<T> entityClass) {
 		String querySql = SearchUtils.getCountSentence(entityClass);
 		Query query = getSession().createQuery(querySql);
 		return ((Long)query.iterate().next()).intValue();
@@ -89,7 +89,7 @@ public class GenericDaoSupportImpl extends HibernateDaoSupport implements Generi
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> List<T> list(Class<T> entityClass, int firstResult, int maxResults) {
+	public List<T> list(Class<T> entityClass, int firstResult, int maxResults) {
 		Query query = getSession().createQuery(SearchUtils.getQuerySentence(entityClass));
 		query.setFirstResult(firstResult);
 		query.setMaxResults(maxResults);
@@ -112,8 +112,9 @@ public class GenericDaoSupportImpl extends HibernateDaoSupport implements Generi
 		return result.size() > 1 ? result.size() : ((Long) result.get(0)).intValue();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<?> searchForList(String sentence, Map<String, Object> parameters) {
+	public List<T> searchForList(String sentence, Map<String, Object> parameters) {
 		Query query = getSession().createQuery(sentence);
 		for(Iterator<Entry<String, Object>> iter = parameters.entrySet().iterator(); iter.hasNext();) {
 			Entry<String,Object> entry = iter.next();
@@ -127,8 +128,9 @@ public class GenericDaoSupportImpl extends HibernateDaoSupport implements Generi
 		return query.list();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<?> searchForList(String sentence, Map<String, Object> parameters, int firstResult, int maxResults) {
+	public List<T> searchForList(String sentence, Map<String, Object> parameters, int firstResult, int maxResults) {
 		Query query = getSession().createQuery(sentence);
 		query.setFirstResult(firstResult);
 		query.setMaxResults(maxResults);
@@ -189,30 +191,30 @@ public class GenericDaoSupportImpl extends HibernateDaoSupport implements Generi
 	}
 	
 	@Override
-	public <T> List<T> queryForList(String sentence, Map<String, Object> parameters, Class<T> resultClass) {
+	public List<T> queryForList(String sentence, Map<String, Object> parameters, Class<T> resultClass) {
 		List<Map<String,Object>> tempResult = queryForList(sentence, parameters);
 		return getResultList(tempResult, resultClass);
 	}
 	
 	@Override
-	public <T> List<T> queryForList(String sentence, Object parameterBean, Class<T> resultClass) {
+	public List<T> queryForList(String sentence, Object parameterBean, Class<T> resultClass) {
 		List<Map<String,Object>> tempResult = queryForList(sentence, parameterBean);
 		return getResultList(tempResult, resultClass);
 	}
 	
 	@Override
-	public <T> List<T> queryForList(String sentence, Map<String, Object> parameters, Class<T> resultClass, int beginIndex, int maxResult) {
+	public List<T> queryForList(String sentence, Map<String, Object> parameters, Class<T> resultClass, int beginIndex, int maxResult) {
 		List<Map<String,Object>> tempResult = queryForList(sentence, parameters, beginIndex, maxResult);
 		return getResultList(tempResult, resultClass);
 	}
 	
 	@Override
-	public <T> List<T> queryForList(String sentence, Object parameterBean, Class<T> resultClass, int beginIndex, int maxResult) {
+	public List<T> queryForList(String sentence, Object parameterBean, Class<T> resultClass, int beginIndex, int maxResult) {
 		List<Map<String,Object>> tempResult = queryForList(sentence, parameterBean, beginIndex, maxResult);
 		return getResultList(tempResult, resultClass);
 	}
 	
-	private <T> List<T> getResultList(List<Map<String,Object>> tempResult, Class<T> resultClass) {
+	private List<T> getResultList(List<Map<String,Object>> tempResult, Class<T> resultClass) {
 		List<T> result = new ArrayList<T>();
 		for (Map<String,Object> temp : tempResult) {
 			T bean = BeanUtils.reflectClass(resultClass);

@@ -1,6 +1,6 @@
 package org.abin.core.page;
 
-import java.util.ResourceBundle;
+import org.abin.core.util.ConfigUtils;
 
 public class PageUtils {
 	
@@ -21,7 +21,7 @@ public class PageUtils {
 	}
 	
 	private static int getEveryPage(int everyPage) {
-		String defaultEveryPage = ResourceBundle.getBundle("config").getString("page.everyPage");
+		String defaultEveryPage = ConfigUtils.getString("page.everyPage");
 		return everyPage == 0 ? new Integer(defaultEveryPage).intValue() : everyPage;
 	}
 	

@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.servlet.ServletContext;
 
-import org.abin.core.loader.ServletContextLoader;
 import org.abin.core.search.SearchMapping;
 import org.hibernate.SessionFactory;
 import org.springframework.web.context.support.WebApplicationContextUtils;

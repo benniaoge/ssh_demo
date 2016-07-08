@@ -11,7 +11,7 @@ import java.util.Map;
  * @author ZhangBin
  * 
  */
-public interface GenericDaoSupport {
+public interface GenericDaoSupport<T> {
 	
 	public static final List<Class<?>> BASIC_CONVERSION_TYPES = Arrays.asList(new Class<?>[] { String.class, Integer.class, Long.class, Date.class });
 	
@@ -19,31 +19,31 @@ public interface GenericDaoSupport {
 	// Hibernate Operations
 	// --------------------------
 	
-	public Serializable save(Object entity);
+	public Serializable save(T entity);
 	
-	public void update(Object entity);
+	public void update(T entity);
 	
-	public void saveOrUpdate(Object entity);
+	public void saveOrUpdate(T entity);
 	
-	public void delete(Object entity);
+	public void delete(T entity);
 	
-	public void delete(Class<?> entityClass, Serializable id);
+	public void delete(Class<T> entityClass, Serializable id);
 	
-	public <T> T load(Class<T> entityClass, Serializable id);
+	public T load(Class<T> entityClass, Serializable id);
 	
-	public <T> List<T> loadAll(Class<T> entityClass);
+	public List<T> loadAll(Class<T> entityClass);
 	
-	public <T> T get(Class<T> entityClass, Serializable id);
+	public T get(Class<T> entityClass, Serializable id);
 	
-	public int count(Class<?> entityClass);
+	public int count(Class<T> entityClass);
 	
-	public <T> List<T> list(Class<T> entityClass, int firstResult, int maxResults);
+	public List<T> list(Class<T> entityClass, int firstResult, int maxResults);
 	
 	public int searchForInt(String sentence, Map<String, Object> parameters);
 	
-	public List<?> searchForList(String sentence, Map<String, Object> parameters);
+	public List<T> searchForList(String sentence, Map<String, Object> parameters);
 	
-	public List<?> searchForList(String sentence, Map<String,Object> parameters, int firstResult, int maxResults);
+	public List<T> searchForList(String sentence, Map<String,Object> parameters, int firstResult, int maxResults);
 	
 	// --------------------------
 	// JDBC Operations
@@ -63,12 +63,12 @@ public interface GenericDaoSupport {
 
 	public Map<String, Object> queryForSingle(String sentence, Map<String, Object> parameters);
 	
-	public <T> List<T> queryForList(String sentence, Map<String,Object> parameters, Class<T> resultClass);
+	public List<T> queryForList(String sentence, Map<String,Object> parameters, Class<T> resultClass);
 	
-	public <T> List<T> queryForList(String sentence, Object parameterBean, Class<T> resultClass);
+	public List<T> queryForList(String sentence, Object parameterBean, Class<T> resultClass);
 	
-	public <T> List<T> queryForList(String sentence, Map<String,Object> parameters, Class<T> resultClass, int beginIndex, int maxResult);
+	public List<T> queryForList(String sentence, Map<String,Object> parameters, Class<T> resultClass, int beginIndex, int maxResult);
 	
-	public <T> List<T> queryForList(String sentence, Object parameterBean, Class<T> resultClass, int beginIndex, int maxResult);
+	public List<T> queryForList(String sentence, Object parameterBean, Class<T> resultClass, int beginIndex, int maxResult);
 	
 }

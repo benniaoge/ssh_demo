@@ -30,6 +30,7 @@ public class PreloadingInterceptor extends AbstractInterceptor {
 		return invocation.invoke();
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void before(ActionInvocation invocation) throws Exception {
 		final Map<String,Object> parameters = ActionContext.getContext().getParameters();
 		
@@ -82,6 +83,7 @@ public class PreloadingInterceptor extends AbstractInterceptor {
 		}
 	}
 	
+	@SuppressWarnings("rawtypes")
 	protected GenericService getGenericService(ServletContext servletContext) {
 		ApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
 		return (GenericService) applicationContext.getBean("genericService");
