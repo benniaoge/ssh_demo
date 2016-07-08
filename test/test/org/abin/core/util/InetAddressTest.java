@@ -1,17 +1,9 @@
 /**
  * 
  */
-package test;
+package test.org.abin.core.util;
 
 import java.net.InetAddress;
-import java.net.InterfaceAddress;
-import java.net.NetworkInterface;
-import java.text.MessageFormat;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.List;
-
-import com.sun.jmx.snmp.EnumRowStatus;
 
 
 
@@ -19,7 +11,7 @@ import com.sun.jmx.snmp.EnumRowStatus;
  * @author ZhangBin
  * 
  */
-public class Test {
+public class InetAddressTest {
 	
 	public static void main(String[] args) throws Exception {
 		/*

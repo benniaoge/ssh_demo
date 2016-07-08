@@ -1,4 +1,4 @@
-package test;
+package test.org.abin.core.util;
 
 import java.security.Key;
 import java.security.KeyFactory;
