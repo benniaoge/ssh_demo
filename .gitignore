@@ -2,4 +2,4 @@
 /.classpath
 /.project
 /build/
-/WEB-INF/classes/
+/web/WEB-INF/classes/
