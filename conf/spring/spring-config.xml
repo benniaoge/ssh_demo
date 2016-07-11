@@ -18,27 +18,27 @@
 		</property>
 	</bean>
 	
-	<bean id="genericDaoSupport" class="com.emar.core.dao.impl.GenericDaoSupportImpl" />
+	<bean id="genericDaoSupport" class="org.abin.core.dao.impl.GenericDaoSupportImpl" />
 
-	<bean id="genericService" class="com.emar.core.service.impl.GenericServiceImpl" />
+	<bean id="genericService" class="org.abin.core.service.impl.GenericServiceImpl" />
 
-	<bean id="searchDialect" class="com.emar.core.search.dialect.impl.MySqlDialect" />
+	<bean id="searchDialect" class="org.abin.core.search.dialect.impl.MySqlDialect" />
 
-	<bean id="page" class="com.emar.core.page.Page" scope="prototype" />
+	<bean id="page" class="org.abin.core.page.Page" scope="prototype" />
 	
-	<bean id="jobFactory" class="com.emar.core.spring.JobFactory"/>
+	<bean id="jobFactory" class="org.abin.core.spring.JobFactory"/>
 	
-	<bean id="servletContextLoader" class="com.emar.core.loader.ServletContextLoaderImpl">
+	<bean id="servletContextLoader" class="org.abin.core.loader.ServletContextLoaderImpl">
 		<property name="servletContextLoaders">
-			<list value-type="com.emar.core.loader.ServletContextLoader">
+			<list value-type="org.abin.core.loader.ServletContextLoader">
 				<ref bean="systemLoader"/>
 				<ref bean="dictLoader"/>
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="systemLoader" class="com.emar.core.loader.SystemLoader"/>
+	<bean id="systemLoader" class="org.abin.core.loader.SystemLoader"/>
 	
-	<bean id="dictLoader" class="com.emar.ebox.clone.loader.DictLoader"/>
+	<bean id="dictLoader" class="com.abin.demo.loader.DictLoader"/>
 	
 </beans>

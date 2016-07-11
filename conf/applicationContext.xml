@@ -13,9 +13,8 @@
 	<import resource="classpath:spring/spring-config.xml"/>
 	<import resource="classpath:spring/spring-c3p0.xml"/>
 	<import resource="classpath:spring/spring-beans.xml"/>
-	<import resource="classpath:spring/spring-redis-mq.xml"/>
-	<import resource="classpath:spring/spring-redis-cm.xml"/>
-	<import resource="classpath:spring/spring-redis-crowd.xml"/>
+	<import resource="classpath:spring/spring-redis.xml"/>
+	<import resource="classpath:spring/spring-redis-cluster.xml"/>
 	<import resource="classpath:spring/spring-quartz.xml"/>
 
 </beans>

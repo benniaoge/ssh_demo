@@ -9,10 +9,5 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-    <bean id="deviceFileService" class="com.emar.ebox.clone.device.service.DeviceFileServiceImpl"/>
-    
-    <bean id="deviceInfoService" class="com.emar.ebox.clone.device.service.DeviceInfoServiceImpl"/>
-    
-    <bean id="targetService" class="com.emar.ebox.clone.target.service.TargetServiceImpl"/>
     
 </beans>

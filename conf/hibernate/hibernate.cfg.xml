@@ -4,9 +4,6 @@
 		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-    	<mapping class="com.emar.ebox.clone.target.entity.TargetEntity"/>
-    	
-        <mapping class="com.emar.ebox.clone.device.entity.DeviceFileEntity"/>
-        <mapping class="com.emar.ebox.clone.device.entity.DeviceInfoEntity"/>
+    	<mapping class=""/>
     </session-factory>
 </hibernate-configuration>

@@ -8,26 +8,15 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
-
-    <bean id="generateEmarIdJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject" ref="deviceFileService"/>
-        <property name="targetMethod" value="save"/>
-        <property name="concurrent" value="false"/>
-    </bean>
     
-    <bean id="generateTargetJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <bean id="targetJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="targetService"/>
         <property name="targetMethod" value="save"/>
         <property name="concurrent" value="false"/>
     </bean>
     
-    <bean id="generateEmarIdTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="generateEmarIdJob"/>
-        <property name="cronExpression" value="0 0/5 * * * ?"/>
-    </bean>
-    
-    <bean id="generateTargetTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="generateTargetJob"/>
+    <bean id="targetTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="targetJob"/>
         <property name="cronExpression" value="0 0/5 * * * ?"/>
     </bean>
     
@@ -35,8 +24,7 @@
         <property name="jobFactory" ref="jobFactory"/>
         <property name="triggers">
             <list>
-                <ref bean="generateEmarIdTrigger"/>
-                <ref bean="generateTargetTrigger"/>
+                <ref bean="targetTrigger"/>
             </list>
         </property>
     </bean>

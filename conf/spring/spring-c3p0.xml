@@ -46,15 +46,15 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<tx:advice id="eboxAdvice" transaction-manager="transactionManager">
+	<tx:advice id="abinAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="*"/>
 		</tx:attributes>
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut id="eboxPoint" expression="execution(* com.emar.ebox..serivce..*.*(..))"/>
-		<aop:advisor advice-ref="eboxAdvice" pointcut-ref="eboxPoint"/>
+		<aop:pointcut id="abinPoint" expression="execution(* com.abin.demo..serivce..*.*(..))"/>
+		<aop:advisor advice-ref="abinAdvice" pointcut-ref="abinPoint"/>
 	</aop:config>
 	
 </beans>

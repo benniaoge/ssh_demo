@@ -17,11 +17,11 @@
 	    </result-types>
 		
 		<interceptors>
-			<interceptor name="exception" class="com.emar.core.struts.interceptor.ExceptionCatcherInterceptor" />
-			<interceptor name="preloading" class="com.emar.core.struts.interceptor.PreloadingInterceptor" />
-			<interceptor name="search" class="com.emar.core.struts.interceptor.SearchInterceptor" />
-			<interceptor name="searchCleanUp" class="com.emar.core.struts.interceptor.SearchCriteriaCleanupInterceptor" />
-			<interceptor name="myFileUpload" class="com.emar.core.struts.interceptor.MyFileUploadInterceptor" />
+			<interceptor name="exception" class="org.abin.core.struts.interceptor.ExceptionCatcherInterceptor" />
+			<interceptor name="preloading" class="org.abin.core.struts.interceptor.PreloadingInterceptor" />
+			<interceptor name="search" class="org.abin.core.struts.interceptor.SearchInterceptor" />
+			<interceptor name="searchCleanUp" class="org.abin.core.struts.interceptor.SearchCriteriaCleanupInterceptor" />
+			<interceptor name="myFileUpload" class="org.abin.core.struts.interceptor.MyFileUploadInterceptor" />
 			<interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
 
 			<interceptor-stack name="eboxWebStack">
