@@ -50,7 +50,7 @@
 	<listener>
 		<listener-class>org.abin.core.loader.listener.ServletContextLoaderListener</listener-class>
 	</listener>
-
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
