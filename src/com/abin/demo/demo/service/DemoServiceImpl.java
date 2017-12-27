@@ -1,6 +1,6 @@
 package com.abin.demo.demo.service;
 
-import org.abin.core.service.impl.GenericServiceImpl;
+import org.bng.core.service.impl.GenericServiceImpl;
 
 import com.abin.demo.demo.entity.DemoEntity;
 

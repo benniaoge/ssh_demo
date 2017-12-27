@@ -2,11 +2,11 @@ package com.abin.demo.action.file;
 
 import java.io.File;
 
-import org.abin.core.exception.BusinessException;
-import org.abin.core.struts.action.BaseActionSupport;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.InterceptorRefs;
 import org.apache.struts2.convention.annotation.Result;
+import org.bng.core.exception.BusinessException;
+import org.bng.core.struts.action.BaseActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.abin.demo.file.service.FileService;

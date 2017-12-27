@@ -7,9 +7,9 @@ import java.util.TreeMap;
 
 import javax.servlet.ServletContext;
 
-import org.abin.core.loader.ServletContextLoader;
-import org.abin.core.service.GenericService;
-import org.abin.core.util.WebContextUtils;
+import org.bng.core.loader.ServletContextLoader;
+import org.bng.core.service.GenericService;
+import org.bng.core.util.WebContextUtils;
 
 import com.abin.demo.dict.entity.Dict;
 

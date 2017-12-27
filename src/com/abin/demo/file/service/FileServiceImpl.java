@@ -2,8 +2,8 @@ package com.abin.demo.file.service;
 
 import java.io.File;
 
-import org.abin.core.file.FileProcessor;
-import org.abin.core.util.ConfigUtils;
+import org.bng.core.file.FileProcessor;
+import org.bng.core.util.ConfigUtils;
 
 public class FileServiceImpl implements FileService {
 	

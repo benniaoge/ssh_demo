@@ -2,7 +2,7 @@ package com.abin.demo.action.demo;
 
 import java.util.List;
 
-import org.abin.core.page.Result;
+import org.bng.core.page.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.abin.demo.action.BaseSearchAction;
